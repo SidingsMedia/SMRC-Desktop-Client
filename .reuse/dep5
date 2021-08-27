@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: SMRC-Desktop-Client
+Upstream-Contact: Matthew Nickson <contact@sidingsmedia.com>
+Source: https://github.com/SidingsMedia/SMRC-Desktop-Client
+
+Files: .github/workflows/*
+Copyright: Copyright (c) 2021 Sidings Media
+License: CC0-1.0

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: Copyright (c) 2013-2021, Facebook, Inc.
+
+// SPDX-License-Identifier: MIT
+
 'use strict';
 
 // Do this as the first thing so that any code reading it knows the right env.

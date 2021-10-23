@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: Copyright (c) 2013-2021, Facebook, Inc.
+
+// SPDX-License-Identifier: MIT
+
 'use strict';
 
 const babelJest = require('babel-jest');

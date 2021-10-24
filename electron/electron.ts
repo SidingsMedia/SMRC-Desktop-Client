@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Copyright (c) 2021 Sidings Media
 // SPDX-License-Identifier: MIT
 
-import { app, BrowserWindow, protocol } from "electron";
+import { app, BrowserWindow, protocol, session, webContents } from "electron";
 import { request } from "http";
 import * as path from "path";
 import * as url from "url";
@@ -12,6 +12,7 @@ function createWindow(): void {
         height: 600,
         webPreferences: {
             preload: path.join(__dirname, "preload.js"),
+            sandbox: true,
         },
     });
 
@@ -30,6 +31,13 @@ function createWindow(): void {
     if (!app.isPackaged) {
         mainWin.webContents.openDevTools();
     }
+
+    // Prevent automatic permission requests
+    mainWin.webContents.session.setPermissionRequestHandler(
+        (webContents, permission, callback) => {
+            return callback(false);
+        }
+    );
 }
 
 // Local proxy to adjust paths of files when loaded from

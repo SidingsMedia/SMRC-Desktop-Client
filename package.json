@@ -181,7 +181,7 @@
         ]
     },
     "build": {
-        "appId": "com.electron.smrc",
+        "appId": "com.sidingsmedia.smrc",
         "productName": "Sidings Media Railway Controller",
         "files": [
             "build/**/*",
@@ -191,13 +191,17 @@
             "buildResources": "public"
         },
         "mac": {
-            "target": "dmg"
+            "target": "dmg",
+            "icon": "public/logos/rendered/favicon.icns"
         },
         "win": {
-            "target": "nsis"
+            "target": "nsis",
+            "icon": "public/logos/rendered/favicon.ico"
         },
         "linux": {
-            "target": "deb"
+            "target": "deb",
+            "icon": "public/logos/rendered/track-bw-square.png",
+            "category": "Utility"
         }
     }
 }

@@ -1,0 +1,3 @@
+[submodule "public/logos"]
+	path = public/logos
+	url = https://github.com/SidingsMedia/SMRC-logos.git

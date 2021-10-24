@@ -5,3 +5,6 @@
 [submodule "public/logos"]
 	path = public/logos
 	url = https://github.com/SidingsMedia/SMRC-logos.git
+[submodule "src/logos"]
+	path = src/logos
+	url = https://github.com/SidingsMedia/SMRC-logos.git

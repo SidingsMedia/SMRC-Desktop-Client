@@ -21,10 +21,10 @@ function checkIpc(channel: string): boolean {
     }
 }
 
-contextBridge.exposeInMainWorld("window-control", {
-    registerIPC: (channel: string, callback: Function) => {
+contextBridge.exposeInMainWorld("control", {
+    registerIPC: (channel: string, callback: Function): void => {
         ctrlChannel = channel;
-        ipcRenderer.on(ctrlChannel, (event, arg) => {
+        ipcRenderer.on(ctrlChannel, (event, arg: string) => {
             callback(arg);
         });
         ipcRegistered.add(ctrlChannel);

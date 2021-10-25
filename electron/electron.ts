@@ -7,36 +7,6 @@ import { request } from "http";
 import * as path from "path";
 import * as url from "url";
 
-// class Window extends BrowserWindow {
-//     constructor(ctrlChannel: string) {
-//         super({
-//             width: 800,
-//             minWidth: 800,
-//             height: 600,
-//             minHeight: 600,
-//             webPreferences: {
-//                 preload: path.join(__dirname, "preload.js"),
-//                 sandbox: true,
-//             },
-//             frame: false,
-//             backgroundColor: "#121212",
-//         });
-
-//         const appURL = app.isPackaged
-//             ? url.format({
-//                   pathname: path.join(__dirname, "../index.html"),
-//                   protocol: "file",
-//                   slashes: true,
-//               })
-//             : "http://localhost:3000";
-//         console.log(appURL);
-//         this.loadURL(appURL);
-
-//         // Open dev tools if in dev
-//         if (!app.isPackaged) {
-//             this.webContents.openDevTools();
-//         }
-
 // Local proxy to adjust paths of files when loaded from
 // production bundle
 function setupLocalFilesNormalizerProxy(): void {

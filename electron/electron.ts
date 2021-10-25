@@ -1,44 +1,41 @@
 // SPDX-FileCopyrightText: Copyright (c) 2021 Sidings Media
 // SPDX-License-Identifier: MIT
 
-import { app, BrowserWindow, protocol, session, webContents } from "electron";
+import { app, protocol, BrowserWindow, session, webContents } from "electron";
+import { Window } from "./base/Window";
 import { request } from "http";
 import * as path from "path";
 import * as url from "url";
 
-function createWindow(): void {
-    const mainWin = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            preload: path.join(__dirname, "preload.js"),
-            sandbox: true,
-        },
-    });
+// class Window extends BrowserWindow {
+//     constructor(ctrlChannel: string) {
+//         super({
+//             width: 800,
+//             minWidth: 800,
+//             height: 600,
+//             minHeight: 600,
+//             webPreferences: {
+//                 preload: path.join(__dirname, "preload.js"),
+//                 sandbox: true,
+//             },
+//             frame: false,
+//             backgroundColor: "#121212",
+//         });
 
-    // Get correct url dependant on is app is in development
-    // or production
-    const appURL = app.isPackaged
-        ? url.format({
-              pathname: path.join(__dirname, "../index.html"),
-              protocol: "file",
-              slashes: true,
-          })
-        : "http://localhost:3000";
-    mainWin.loadURL(appURL);
+//         const appURL = app.isPackaged
+//             ? url.format({
+//                   pathname: path.join(__dirname, "../index.html"),
+//                   protocol: "file",
+//                   slashes: true,
+//               })
+//             : "http://localhost:3000";
+//         console.log(appURL);
+//         this.loadURL(appURL);
 
-    // Open dev tools if in dev
-    if (!app.isPackaged) {
-        mainWin.webContents.openDevTools();
-    }
-
-    // Prevent automatic permission requests
-    mainWin.webContents.session.setPermissionRequestHandler(
-        (webContents, permission, callback) => {
-            return callback(false);
-        }
-    );
-}
+//         // Open dev tools if in dev
+//         if (!app.isPackaged) {
+//             this.webContents.openDevTools();
+//         }
 
 // Local proxy to adjust paths of files when loaded from
 // production bundle
@@ -49,15 +46,29 @@ function setupLocalFilesNormalizerProxy(): void {
     });
 }
 
+var mainWin: Window;
+
 app.whenReady().then(() => {
-    createWindow();
+    console.log("ready");
+    const appURL = app.isPackaged
+        ? url.format({
+              pathname: path.join(__dirname, "../index.html"),
+              protocol: "file",
+              slashes: true,
+          })
+        : "http://localhost:3000";
+    mainWin = new Window({ url: appURL }, "win-ctrl-main");
+    // Open dev tools if in dev
+    if (!app.isPackaged) {
+        mainWin.openDevTools();
+    }
     setupLocalFilesNormalizerProxy();
 
     app.on("activate", function (): void {
         // macOS expects that a new window is created if
         // the doc icon is clicked
         if (BrowserWindow.getAllWindows().length === 0) {
-            createWindow();
+            const mainWin = new Window({ url: appURL }, "win-ctrl-main");
         }
     });
 });

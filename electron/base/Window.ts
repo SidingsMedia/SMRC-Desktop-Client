@@ -62,19 +62,19 @@ export class Window {
         // Handle window control messages
         ipcMain.on(this.ctrlChannel, (event, arg) => {
             switch (arg) {
-                case "open-dev-tools":
+                case "openDevTools":
                     this.openDevTools();
                     break;
-                case "close-dev-tools":
+                case "closeDevTools":
                     this.closeDevTools();
                     break;
-                case "toggle-dev-tools":
+                case "toggleDevTools":
                     this.toggleDevTools();
                     break;
-                case "dev-tools-open":
+                case "devToolsOpen":
                     event.reply(this.ctrlChannel, this.devToolsOpen());
                     break;
-                case "get-focus":
+                case "getFocus":
                     event.reply(this.ctrlChannel, this.getFocus());
                     break;
                 case "close":
@@ -86,14 +86,14 @@ export class Window {
                 case "maximize":
                     this.maximize();
                     break;
-                case "un-maximize":
+                case "unMaximize":
                     this.unMaximize();
                     break;
-                case "toggle-full-screen":
+                case "toggleFullScreen":
                     this.toggleFullScreen();
                     break;
                 default:
-                    event.reply(ctrlChannel, "no-method");
+                    event.reply(ctrlChannel, "noMethod");
                     break;
             }
         });

@@ -1,0 +1,80 @@
+/* SPDX-FileCopyrightText: Copyright (c) 2021 Sidings Media
+
+SPDX-License-Identifier: MIT */
+
+:root {
+    /* Colours */
+    --dark-h: 0;
+    --dark-s: 0%;
+    --dark-l: 7%;
+
+    --dark: hsla(var(--dark-h), var(--dark-s), var(--dark-l), 100%);
+    --dark-10: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 5%),
+        100%
+    );
+    --dark-20: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 10%),
+        100%
+    );
+    --dark-30: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 15%),
+        100%
+    );
+    --dark-40: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 20%),
+        100%
+    );
+    --dark-50: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 25%),
+        100%
+    );
+    --dark-60: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 30%),
+        100%
+    );
+    --dark-70: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 35%),
+        100%
+    );
+    --dark-80: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 40%),
+        100%
+    );
+
+    --text-color: #ffffff;
+}
+
+* {
+    color: var(--text-color);
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}

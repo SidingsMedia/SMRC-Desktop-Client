@@ -40,8 +40,24 @@ export class Window {
      * @param {String} ctrlChannel - The channel for window control calls to be made on
      */
     constructor({ url, ...windowSettings }: winProps, ctrlChannel: string) {
-        this.win = new BrowserWindow({ ...defaultProps, ...windowSettings });
         this.ctrlChannel = ctrlChannel;
+        this.win = new BrowserWindow({ ...defaultProps, ...windowSettings });
+        // Inform renderer of current blur status
+        this.win.on("focus", () => {
+            this.alertFocus();
+        });
+        this.win.on("blur", () => {
+            this.alertBlur();
+        });
+        // BUG: Electron doesn't emit these events on linux
+        // see https://github.com/electron/electron/issues/28699
+        // Inform renderer of current maximize status
+        this.win.on("maximize", () => {
+            this.alertMaximize();
+        });
+        this.win.on("unmaximize", () => {
+            this.alertUnMaximize();
+        });
         this.win.loadURL(url);
 
         // Prevent automatic permission requests
@@ -50,14 +66,6 @@ export class Window {
                 return callback(false);
             }
         );
-
-        // Inform renderer of current blur status
-        this.win.on("focus", () => {
-            this.alertFocus();
-        });
-        this.win.on("blur", () => {
-            this.alertBlur();
-        });
 
         // Handle window control messages
         ipcMain.on(this.ctrlChannel, (event, arg) => {
@@ -106,6 +114,9 @@ export class Window {
                     break;
             }
         });
+
+        // These must be created after IPC handlers have been declared
+        // else the IPC may be called and no handler ready to reply
     }
 
     // Basic window controls
@@ -129,6 +140,30 @@ export class Window {
         this.win.webContents.send(this.ctrlChannel, {
             type: "focus",
             value: "blur",
+        });
+    }
+
+    /**
+     * Sends a message to the render proccess saying that
+     * the window has been maximizes and it should change
+     * the titlebar icon
+     */
+    alertMaximize(): void {
+        this.win.webContents.send(this.ctrlChannel, {
+            type: "maximize",
+            value: true,
+        });
+    }
+
+    /**
+     * Sends a message to the render proccess saying that
+     * the window has been unmaximized and it should change
+     * the titlebar icon
+     */
+    alertUnMaximize(): void {
+        this.win.webContents.send(this.ctrlChannel, {
+            type: "maximize",
+            value: false,
         });
     }
 
@@ -194,6 +229,7 @@ export class Window {
      */
     maximize(): void {
         this.win.maximize();
+        this.win.emit("maximize");
     }
 
     /**
@@ -201,6 +237,14 @@ export class Window {
      */
     unMaximize(): void {
         this.win.unmaximize();
+        this.win.emit("unmaximize");
+    }
+
+    /**
+     * Returns if the window is maximized
+     */
+    isMaximized(): boolean {
+        return this.win.isMaximized();
     }
 
     /**

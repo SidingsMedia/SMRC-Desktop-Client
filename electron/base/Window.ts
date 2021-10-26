@@ -72,10 +72,16 @@ export class Window {
                     this.toggleDevTools();
                     break;
                 case "devToolsOpen":
-                    event.reply(this.ctrlChannel, this.devToolsOpen());
+                    event.reply(this.ctrlChannel, {
+                        type: "devToolsOpen",
+                        value: this.devToolsOpen(),
+                    });
                     break;
                 case "getFocus":
-                    event.reply(this.ctrlChannel, this.getFocus());
+                    event.reply(this.ctrlChannel, {
+                        type: "getFocus",
+                        value: this.getFocus(),
+                    });
                     break;
                 case "close":
                     this.close();
@@ -93,7 +99,10 @@ export class Window {
                     this.toggleFullScreen();
                     break;
                 default:
-                    event.reply(ctrlChannel, "noMethod");
+                    event.reply(ctrlChannel, {
+                        type: "error",
+                        value: "noMethod",
+                    });
                     break;
             }
         });
@@ -106,7 +115,10 @@ export class Window {
      * it that the window is now in focus
      */
     alertFocus(): void {
-        this.win.webContents.send(this.ctrlChannel, "focus");
+        this.win.webContents.send(this.ctrlChannel, {
+            type: "focus",
+            value: "focus",
+        });
     }
 
     /**
@@ -114,7 +126,10 @@ export class Window {
      * it that the window is no longer in focus
      */
     alertBlur(): void {
-        this.win.webContents.send(this.ctrlChannel, "blur");
+        this.win.webContents.send(this.ctrlChannel, {
+            type: "focus",
+            value: "blur",
+        });
     }
 
     // These methods just expose some of the common

@@ -24,7 +24,7 @@ function checkIpc(channel: string): boolean {
 contextBridge.exposeInMainWorld("control", {
     registerIPC: (channel: string, callback: Function): void => {
         ctrlChannel = channel;
-        ipcRenderer.on(ctrlChannel, (event, arg: string) => {
+        ipcRenderer.on(ctrlChannel, (event, arg: Object) => {
             callback(arg);
         });
         ipcRegistered.add(ctrlChannel);

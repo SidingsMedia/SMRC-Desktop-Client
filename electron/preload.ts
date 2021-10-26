@@ -37,4 +37,5 @@ contextBridge.exposeInMainWorld("control", {
     maximize: () => ipcRenderer.send(ctrlChannel, "maximize"),
     unMaximize: () => ipcRenderer.send(ctrlChannel, "unMaximize"),
     toggleFullScreen: () => ipcRenderer.send(ctrlChannel, "toggleFullScreen"),
+    platform: process.platform,
 });

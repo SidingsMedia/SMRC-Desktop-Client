@@ -3,7 +3,7 @@
 
 import { app, protocol, BrowserWindow, session, webContents } from "electron";
 import { Window } from "./base/Window";
-import { request } from "http";
+
 import * as path from "path";
 import * as url from "url";
 

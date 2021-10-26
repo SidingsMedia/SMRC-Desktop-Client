@@ -5,7 +5,27 @@ import { BrowserWindow } from "electron";
 import { ipcMain } from "electron/main";
 import * as path from "path";
 
-const defaultProps = {
+type titleBarStyle =
+    | "hidden"
+    | "default"
+    | "hiddenInset"
+    | "customButtonsOnHover"
+    | undefined;
+type webPreferencesProps = {
+    preload: string;
+    sandbox: boolean;
+};
+type props = {
+    width: number;
+    minWidth: number;
+    height: number;
+    minHeight: number;
+    webPreferences: webPreferencesProps;
+    frame: boolean;
+    titleBarStyle: titleBarStyle;
+    backgroundColor: string;
+};
+const defaultProps: props = {
     width: 800,
     minWidth: 800,
     height: 600,
@@ -14,7 +34,8 @@ const defaultProps = {
         preload: path.join(__dirname, "../preload.js"),
         sandbox: true,
     },
-    frame: false,
+    frame: process.platform === "win32" ? false : true,
+    titleBarStyle: "hidden",
     backgroundColor: "#121212",
 };
 

@@ -11,16 +11,26 @@ type appProps = {
 };
 
 export class App extends React.Component<appProps> {
-    render() {
-        return (
-            <div className="App">
+    /**
+     * Decides whether to render the titlebar depending upon the
+     * platform
+     * @returns {any} The JSX element
+     */
+    renderTitleBar() {
+        if (process.platform === "win32") {
+            return (
                 <header>
                     <Titlebar
                         winName={this.props.winName}
                         platform={window.control.platform}
                     />
                 </header>
-            </div>
-        );
+            );
+        } else {
+            return undefined;
+        }
+    }
+    render() {
+        return <div className="App">{this.renderTitleBar()}</div>;
     }
 }

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: Copyright (c) 2021 Sidings Media
+
+// SPDX-License-Identifier: MIT
+
 interface Window {
     control: {
         registerIPC(channel: string, callback: Function): void;

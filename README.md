@@ -6,7 +6,7 @@ SPDX-License-Identifier: MIT
 
 # Sidings Media Railway Controller Desktop Client
 
-[![REUSE status](https://api.reuse.software/badge/github.com/SidingsMedia/SMRC-Desktop-Client)](https://api.reuse.software/info/github.com/SidingsMedia/SMRC-Desktop-Client) ![GitHub branch checks state](https://img.shields.io/github/checks-status/SidingsMedia/SMRC-Desktop-Client/main?label=main%20checks) ![GitHub branch checks state](https://img.shields.io/github/checks-status/SidingsMedia/SMRC-Desktop-Client/develop?label=develop%20checks) ![GitHub issues](https://img.shields.io/github/issues/SidingsMedia/SMRC-Desktop-Client) ![GitHub last commit](https://img.shields.io/github/last-commit/sidingsmedia/SMRC-Desktop-Client) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/SidingsMedia/SMRC-Desktop-Client) ![Lines of code](https://img.shields.io/tokei/lines/github/SidingsMedia/SMRC-Desktop-Client)
+[![REUSE status](https://api.reuse.software/badge/github.com/SidingsMedia/SMRC-Desktop-Client)](https://api.reuse.software/info/github.com/SidingsMedia/SMRC-Desktop-Client) ![GitHub issues](https://img.shields.io/github/issues/SidingsMedia/SMRC-Desktop-Client) ![GitHub last commit](https://img.shields.io/github/last-commit/sidingsmedia/SMRC-Desktop-Client) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/SidingsMedia/SMRC-Desktop-Client) ![Lines of code](https://img.shields.io/tokei/lines/github/SidingsMedia/SMRC-Desktop-Client)
 
 This is the desktop client for Sidings Media Railway Controller
 

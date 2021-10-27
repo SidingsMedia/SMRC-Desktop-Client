@@ -48,83 +48,31 @@ export class ControlButton extends React.Component<
         }
     }
 
-    private win32(type: string): any {
-        this.classNames.push("win32Icon", "buttonRight");
-        switch (type) {
-            case "close":
-                this.icon = ["fas", "times"];
-                this.classNames.push("ButtonClose");
-                break;
-            case "minimize":
-                this.icon = ["fas", "window-minimize"];
-                break;
-            case "maximize":
-                this.icon = ["far", "window-maximize"];
-                break;
-            case "unMaximize":
-                this.icon = ["far", "window-restore"];
-                break;
-        }
-        return [this.classNames.toString().replace(/,/g, " "), this.icon];
-    }
-
-    private linux(type: string) {
-        this.classNames.push("linuxIcon", "buttonRight");
-        switch (type) {
-            case "close":
-                this.icon = ["fas", "times"];
-                this.classNames.push("ButtonClose");
-                break;
-            case "minimize":
-                this.icon = ["fas", "window-minimize"];
-                break;
-            case "maximize":
-                this.icon = ["far", "window-maximize"];
-                break;
-            case "unMaximize":
-                this.icon = ["far", "window-restore"];
-                break;
-        }
-        return [this.classNames.toString().replace(/,/g, " "), this.icon];
-    }
-
-    private darwin(type: string) {
-        this.classNames.push("darwinIcon", "buttonLeft");
-        switch (type) {
-            case "close":
-                this.icon = ["fas", "times"];
-                this.classNames.push("ButtonClose");
-                break;
-            case "minimize":
-                this.icon = ["fas", "window-minimize"];
-                break;
-            case "maximize":
-                this.icon = ["far", "window-maximize"];
-                break;
-            case "unMaximize":
-                this.icon = ["far", "window-restore"];
-                break;
-        }
-        return [this.classNames.toString().replace(/,/g, " "), this.icon];
-    }
-
     public render() {
         this.classNames = ["TitleBarButton"];
-        var contents;
-        switch (this.props.platform) {
-            case "win32":
-                contents = this.win32(this.props.type);
+        this.classNames.push("win32Icon", "buttonRight");
+
+        switch (this.props.type) {
+            case "close":
+                this.icon = ["fas", "times"];
+                this.classNames.push("ButtonClose");
                 break;
-            case "darwin":
-                contents = this.darwin(this.props.type);
+            case "minimize":
+                this.icon = ["fas", "window-minimize"];
                 break;
-            default:
-                contents = this.linux(this.props.type);
+            case "maximize":
+                this.icon = ["far", "window-maximize"];
+                break;
+            case "unMaximize":
+                this.icon = ["far", "window-restore"];
                 break;
         }
         return (
-            <span className={contents[0]} onClick={this.handleClick}>
-                <FontAwesomeIcon icon={contents[1]} />
+            <span
+                className={this.classNames.toString().replace(/,/g, " ")}
+                onClick={this.handleClick}
+            >
+                <FontAwesomeIcon icon={this.icon} />
             </span>
         );
     }

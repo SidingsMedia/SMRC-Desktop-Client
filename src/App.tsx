@@ -13,10 +13,13 @@ type appProps = {
 export class App extends React.Component<appProps> {
     /**
      * Decides whether to render the titlebar depending upon the
-     * platform
-     * @returns {any} The JSX element
+     * platform. The titlebar should only be rendered if the app
+     * is running on windows. The default titlebar is used on
+     * all other operating systems.
+     *
+     * @returns {JSX.Element} The JSX element
      */
-    renderTitleBar() {
+    renderTitleBar(): JSX.Element | undefined {
         if (process.platform === "win32") {
             return (
                 <header>

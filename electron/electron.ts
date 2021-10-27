@@ -6,9 +6,10 @@ import { Window } from "./base/Window";
 
 import * as path from "path";
 import * as url from "url";
-
-// Local proxy to adjust paths of files when loaded from
-// production bundle
+/**
+ * Local proxy to adjust paths of files when loaded from
+ * production bundle
+ */
 function setupLocalFilesNormalizerProxy(): void {
     protocol.registerHttpProtocol("file", (request, callback) => {
         const url = request.url.substr(8);

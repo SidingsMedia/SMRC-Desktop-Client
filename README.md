@@ -10,11 +10,19 @@ SPDX-License-Identifier: MIT
 
 This is the desktop client for Sidings Media Railway Controller
 
+## Documentation
+
+Documentation for the desktop client can be found at [docs.sidingsmedia.com/projects/smrc/en/latest/clients/desktop-client.html](https://docs.sidingsmedia.com/projects/smrc/en/latest/clients/desktop-client.html). The sources for all documentation can be found in the [Sidings Media Railway Controller](https://github.com/SidingsMedia/Sidings-Media-Railway-Controller) repo under the `docs/` directory.
+
 ## Supported operating systems
 
 Currently we are only able to support Linux and Windows with the desktop client. This is because we do not currently have a way to test the application on Apple devies and as such have no way of verifying that it will work as expected. We have tried to make provisions in the code for supporting Apple devices but these should be reagarded as unstable and may or may not function correctly. If you would like to help out with testing for apple devices the please send us an email on [contact@sidingsmedia.com](mailto:contact@sidingsmedia.com).
 
 ## For developers
+
+### Developer Documentation
+
+Specific documentation for developers is available at [docs.sidingsmedia.com/projects/smrc/en/latest/developers/desktop-client.html](https://docs.sidingsmedia.com/projects/smrc/en/latest/developers/desktop-client.html).
 
 ### Directory structure
 

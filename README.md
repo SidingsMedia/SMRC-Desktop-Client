@@ -10,6 +10,10 @@ SPDX-License-Identifier: MIT
 
 This is the desktop client for Sidings Media Railway Controller
 
+## Supported operating systems
+
+Currently we are only able to support Linux and Windows with the desktop client. This is because we do not currently have a way to test the application on Apple devies and as such have no way of verifying that it will work as expected. We have tried to make provisions in the code for supporting Apple devices but these should be reagarded as unstable and may or may not function correctly. If you would like to help out with testing for apple devices the please send us an email on [contact@sidingsmedia.com](mailto:contact@sidingsmedia.com).
+
 ## For developers
 
 ### Directory structure

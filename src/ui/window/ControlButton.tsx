@@ -4,7 +4,7 @@
 
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../../styles/base/ControlButton.css";
+import "../../styles/window/ControlButton.css";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 type controlButtonProps = {

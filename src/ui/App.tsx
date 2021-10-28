@@ -4,7 +4,7 @@
 
 import React from "react";
 import "../styles/App.css";
-import { Titlebar } from "./base/Titlebar";
+import { Titlebar } from "./window/Titlebar";
 
 type appProps = {
     winName: string;

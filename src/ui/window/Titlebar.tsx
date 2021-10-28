@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: MIT
 
 import React from "react";
-import "../../styles/window/Titlebar.css";
 import { ControlButton } from "./ControlButton";
 
 type titlebarProps = {

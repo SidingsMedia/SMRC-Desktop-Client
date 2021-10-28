@@ -7,8 +7,8 @@ import ReactDOM from "react-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import "./css/index.css";
-import { App } from "./App";
+import "./styles/index.css";
+import { App } from "./ui/App";
 import reportWebVitals from "./reportWebVitals";
 
 library.add(far, fas);

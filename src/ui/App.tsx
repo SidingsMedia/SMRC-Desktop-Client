@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 import React from "react";
-import "./css/App.css";
+import "../styles/App.css";
 import { Titlebar } from "./base/Titlebar";
 
 type appProps = {

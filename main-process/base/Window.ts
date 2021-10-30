@@ -146,7 +146,7 @@ export class Window {
      * Sends a message to the render proccess informing
      * it that the window is now in focus
      */
-    alertFocus(): void {
+    private alertFocus(): void {
         this.win.webContents.send(this.ctrlChannel, {
             type: "focus",
             value: "focus",
@@ -157,7 +157,7 @@ export class Window {
      * Sends a message to the render proccess informing
      * it that the window is no longer in focus
      */
-    alertBlur(): void {
+    private alertBlur(): void {
         this.win.webContents.send(this.ctrlChannel, {
             type: "focus",
             value: "blur",
@@ -169,7 +169,7 @@ export class Window {
      * the window has been maximizes and it should change
      * the titlebar icon
      */
-    alertMaximize(): void {
+    private alertMaximize(): void {
         this.win.webContents.send(this.ctrlChannel, {
             type: "maximize",
             value: true,
@@ -181,7 +181,7 @@ export class Window {
      * the window has been unmaximized and it should change
      * the titlebar icon
      */
-    alertUnMaximize(): void {
+    private alertUnMaximize(): void {
         this.win.webContents.send(this.ctrlChannel, {
             type: "maximize",
             value: false,

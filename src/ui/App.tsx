@@ -33,6 +33,6 @@ export class App extends React.Component<appProps> {
         }
     }
     render() {
-        return <div className="App">{this.renderTitleBar()}</div>;
+        return <div className="App">{this.renderTitleBar()}<h1>Hello world</h1><p>Hi there how are you</p></div>;
     }
 }

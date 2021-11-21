@@ -101,6 +101,8 @@ export class Window {
      * Adds an ipcMain.handleOnce handler for the window-initialize channel.
      */
     private windowInitialize(): void {
+        // BUG: Sometimes this could end up trying to be registered
+        // twice and as such would throw an error.
         ipcMain.handleOnce("window-initialize", async (event, ...args) => {
             return this.windowID;
         });

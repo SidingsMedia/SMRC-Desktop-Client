@@ -49,7 +49,6 @@ export class Window {
         // Send preloader our ID
         // This must be before the window is created else it won't be
         // ready for the initialization message
-        // BUG: This is not registered on window reload
         ipcMain.handleOnce("window-initialize", async (event, ...args) => {
             return this.windowID;
         });

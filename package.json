@@ -8,7 +8,7 @@
     },
     "description": "Cross platform desktop client for SMRC",
     "homepage": "./",
-    "main": "./build/main-process/electron.js",
+    "main": "./build/main-process/main.js",
     "maintainers": [
         "Sidings Media"
     ],
@@ -111,9 +111,9 @@
         "postinstall": "electron-builder install-app-deps",
         "electron:build": "tsc -p main-process",
         "electron:dev": "electron ./build/main-process/main.js",
-        "electron:package:mac": "yarn react:build && tsc -p electron && electron-builder -m -c.extraMetadata.main=build/electron/electron.js",
-        "electron:package:win": "yarn react:build && tsc -p electron && electron-builder -w -c.extraMetadata.main=build/electron/electron.js",
-        "electron:package:linux": "yarn react:build && tsc -p electron && electron-builder -l -c.extraMetadata.main=build/electron/electron.js"
+        "electron:package:mac": "yarn react:build && tsc -p electron && electron-builder -m -c.extraMetadata.main=build/main-process/main.js",
+        "electron:package:win": "yarn react:build && tsc -p electron && electron-builder -w -c.extraMetadata.main=build/main-process/main.js",
+        "electron:package:linux": "yarn react:build && tsc -p electron && electron-builder -l -c.extraMetadata.main=build/main-process/main.js"
     },
     "eslintConfig": {
         "extends": [

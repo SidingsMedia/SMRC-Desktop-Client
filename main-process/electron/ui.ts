@@ -41,7 +41,7 @@ export class UI extends EventEmitter {
     createWindow(firstFile: String): void {
         // Make sure to get compiled React files from correct place
         const appURL = app.isPackaged
-            ? `file://${path.join(__dirname, `../${firstFile}`)}`
+            ? `file://${path.join(__dirname, `../../${firstFile}`)}`
             : `http://localhost:3000/${firstFile}`;
         console.log(appURL);
         let length = this.windows.length;

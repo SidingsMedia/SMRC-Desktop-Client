@@ -17,8 +17,8 @@ const defaultProps: Electron.BrowserWindowConstructorOptions = {
     frame: process.platform === "win32" ? false : true,
     titleBarStyle: "hidden",
     titleBarOverlay: {
-        color: "#121212",
-        symbolColor: "#FFFFFF",
+        color: "#2b2b2b",
+        symbolColor: "#cccccc",
     },
     backgroundColor: "#121212",
 };

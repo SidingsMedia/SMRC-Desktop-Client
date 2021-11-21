@@ -3,34 +3,54 @@
 SPDX-License-Identifier: MIT */
 
 .Titlebar {
+    position: fixed;
+    box-sizing: border-box;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: left;
+    flex-shrink: 0;
+    align-items: center;
+    /* Use the environment variable with a fallback. */
+    left: env(titlebar-area-x, 0);
+    top: env(titlebar-area-y, 0);
+    height: env(titlebar-area-height, 30px);
     width: 100%;
-    height: 30px;
-    line-height: 30px;
+    line-height: calc( env(titlebar-area-height, 30px) - 1 );
     -webkit-user-select: none;
-    -webkit-app-region: drag;
     background-color: var(--dark-20);
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 9999;
+    z-index: 9000;
+    zoom: 1;
+    /* Make sure the `div` stays there, even when scrolling. */
 }
 .Titlebar .WindowName {
-    line-height: 30px;
+    line-height: env(titlebar-area-height, 30px);
     text-align: center;
     margin: 0 auto;
-    color: var(--text-50);
+    margin-top: 1px;
+    margin-bottom: 1px;
+    color: var(--text-40);
     width: fit-content;
     display: inline-block;
 }
-/* .Titlebar p {
-    color: var(--text-50);
-    width: fit-content;
-    margin: 0 auto;
-} */
-.focus {
-    background-color: var(--dark-10);
-    color: var(--text-50);
+.Titlebar .titlebar-drag-region{
+    top: 0;
+    left: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-app-region: drag;
 }
-.focus p {
-    color: var(--text);
+.Titlebar .window-icon{
+    background-image: url(../../../logos/track-bw-square.svg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 20px;
+    width: 35px;
+    height: 100%;
+    position: relative;
+    z-index: 9001;
+    flex-shrink: 0;
+    -webkit-app-region: drag;
 }

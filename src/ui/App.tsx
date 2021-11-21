@@ -19,7 +19,7 @@ export class App extends React.Component<appProps> {
      * @returns {JSX.Element} The JSX element
      */
     renderTitleBar(): JSX.Element | undefined {
-        if (process.platform === "win32") {
+        if (window.control.platform === "win32") {
             return (
                 <header>
                     <Titlebar

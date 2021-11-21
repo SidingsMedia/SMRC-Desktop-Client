@@ -49,14 +49,14 @@ export class Window {
         // Send preloader our ID
         // This must be before the window is created else it won't be
         // ready for the initialization message
-        ipcMain.handleOnce('window-initialize', async (event, ...args) => {
-            return this.windowID
-        })
+        // BUG: This is not registered on window reload
+        ipcMain.handleOnce("window-initialize", async (event, ...args) => {
+            return this.windowID;
+        });
 
-        this.windowID = windowID
+        this.windowID = windowID;
         this.win = new BrowserWindow({ ...defaultProps, ...windowSettings });
         this.win.loadURL(url);
-        
 
         // Prevent automatic permission requests
         this.win.webContents.session.setPermissionRequestHandler(
@@ -67,31 +67,30 @@ export class Window {
 
         // Handle IPC messages from renderer
         // Control
-        ipcMain.on(`${windowID}/control/openDevTools`, (event, arg) =>{
-            this.openDevTools()
-        })
-        ipcMain.on(`${windowID}/control/closeDevTools`, (event, arg) =>{
-            this.closeDevTools()
-        })
-        ipcMain.on(`${windowID}/control/toggleDevTools`, (event, arg) =>{
-            this.toggleDevTools()
-        })
-        ipcMain.on(`${windowID}/control/close`, (event, arg) =>{
-            this.close()
-        })
-        ipcMain.on(`${windowID}/control/minimize`, (event, arg) =>{
-            this.minimize()
-        })
-        ipcMain.on(`${windowID}/control/maximize`, (event, arg) =>{
-            this.maximize()
-        })
-        ipcMain.on(`${windowID}/control/unMaximize`, (event, arg) =>{
-            this.unMaximize()
-        })
-        ipcMain.on(`${windowID}/control/toggleFullScreen`, (event, arg) =>{
-            this.toggleFullScreen()
-        })
-
+        ipcMain.on(`${windowID}/control/openDevTools`, (event, arg) => {
+            this.openDevTools();
+        });
+        ipcMain.on(`${windowID}/control/closeDevTools`, (event, arg) => {
+            this.closeDevTools();
+        });
+        ipcMain.on(`${windowID}/control/toggleDevTools`, (event, arg) => {
+            this.toggleDevTools();
+        });
+        ipcMain.on(`${windowID}/control/close`, (event, arg) => {
+            this.close();
+        });
+        ipcMain.on(`${windowID}/control/minimize`, (event, arg) => {
+            this.minimize();
+        });
+        ipcMain.on(`${windowID}/control/maximize`, (event, arg) => {
+            this.maximize();
+        });
+        ipcMain.on(`${windowID}/control/unMaximize`, (event, arg) => {
+            this.unMaximize();
+        });
+        ipcMain.on(`${windowID}/control/toggleFullScreen`, (event, arg) => {
+            this.toggleFullScreen();
+        });
     }
 
     // These methods just expose some of the common

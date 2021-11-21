@@ -71,8 +71,16 @@ export class UI extends EventEmitter {
      * @emits will-quit
      */
     private quit(): void {
-        this.emit("will-quit");
-        app.quit();
+        const event = {
+            defaultPrevented: false,
+            preventDefault(): void {
+                this.defaultPrevented = true;
+            },
+        };
+        this.emit("will-quit", event);
+        if (!event.defaultPrevented) {
+            app.quit();
+        }
     }
 
     /** Called when the activate event is emmited by app

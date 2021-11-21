@@ -5,6 +5,11 @@ import { contextBridge, ipcRenderer } from "electron";
 
 let windowID:number
 
+// Inform the main process to create a window-initialize handler for us
+// to use when we load again.
+window.onbeforeunload = (e) => {
+    ipcRenderer.send(`${windowID}/event/beforeunload`);
+};
 ipcRenderer.invoke('window-initialize').then((result) =>{
     windowID = result
 })

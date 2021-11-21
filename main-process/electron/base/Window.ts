@@ -17,8 +17,8 @@ const defaultProps: Electron.BrowserWindowConstructorOptions = {
     frame: process.platform === "win32" ? false : true,
     titleBarStyle: "hidden",
     titleBarOverlay: {
-        color: '#121212',
-        symbolColor: '#FFFFFF'
+        color: "#121212",
+        symbolColor: "#FFFFFF",
     },
     backgroundColor: "#121212",
 };
@@ -91,6 +91,20 @@ export class Window {
         ipcMain.on(`${windowID}/control/toggleFullScreen`, (event, arg) => {
             this.toggleFullScreen();
         });
+        // Window reload
+        ipcMain.on(`${windowID}/event/beforeunload`, (event, arg) => {
+            this.windowInitialize();
+        });
+    }
+
+    /** Add handler for window-initialize
+     *
+     * Adds an ipcMain.handleOnce handler for the window-initialize channel.
+     */
+    private windowInitialize(): void {
+        ipcMain.handleOnce("window-initialize", async (event, ...args) => {
+            return this.windowID;
+        });
     }
 
     // These methods just expose some of the common
@@ -140,6 +154,7 @@ export class Window {
         if (this.devToolsOpen()) {
             this.closeDevTools();
         }
+        ipcMain.removeHandler("window-initialize");
         this.win.close();
     }
 

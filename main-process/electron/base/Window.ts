@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Copyright (c) 2021 Sidings Media
 // SPDX-License-Identifier: MIT
 
-import { BrowserWindow } from "electron";
+import { BrowserWindow, Menu } from "electron";
 import { ipcMain } from "electron";
 import * as path from "path";
 
@@ -56,6 +56,7 @@ export class Window {
         this.windowID = windowID;
         this.win = new BrowserWindow({ ...defaultProps, ...windowSettings });
         this.win.loadURL(url);
+        Menu.setApplicationMenu(null);
 
         // Prevent automatic permission requests
         this.win.webContents.session.setPermissionRequestHandler(

@@ -8,7 +8,7 @@
     },
     "description": "Cross platform desktop client for SMRC",
     "homepage": "./",
-    "main": "./build/electron/electron.js",
+    "main": "./build/main-process/main.js",
     "maintainers": [
         "Sidings Media"
     ],
@@ -20,6 +20,10 @@
     "private": true,
     "dependencies": {
         "@babel/core": "7.12.3",
+        "@fortawesome/fontawesome-svg-core": "^1.2.36",
+        "@fortawesome/free-regular-svg-icons": "^5.15.4",
+        "@fortawesome/free-solid-svg-icons": "^5.15.4",
+        "@fortawesome/react-fontawesome": "^0.1.16",
         "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
         "@svgr/webpack": "5.5.0",
         "@testing-library/jest-dom": "^5.14.1",
@@ -61,6 +65,7 @@
         "jest-resolve": "26.6.0",
         "jest-watch-typeahead": "0.6.1",
         "mini-css-extract-plugin": "0.11.3",
+        "node-sass": "^6.0.1",
         "optimize-css-assets-webpack-plugin": "5.0.4",
         "pnp-webpack-plugin": "1.6.4",
         "postcss-flexbugs-fixes": "4.2.1",
@@ -92,22 +97,23 @@
     "devDependencies": {
         "concurrently": "^6.3.0",
         "cross-env": "^7.0.3",
-        "electron": "^15.3.0",
+        "electron": "^16.0.1",
         "electron-builder": "^22.13.1",
         "electronmon": "^2.0.2",
         "wait-on": "^6.0.0"
     },
     "scripts": {
         "build": "yarn react:build && yarn electron:build",
+        "dev": "concurrently \"cross-env BROWSER=none yarn react:start\" \"wait-on http://localhost:3000 && tsc -p main-process -w\" \"wait-on http://localhost:3000 && tsc -p main-process && electronmon .\"",
         "react:start": "node scripts/start.js",
         "react:build": "node scripts/build.js",
         "react:test": "node scripts/test.js",
         "postinstall": "electron-builder install-app-deps",
-        "electron:build": "tsc -p electron",
-        "electron:dev": "concurrently \"cross-env BROWSER=none yarn react:start\" \"wait-on http://localhost:3000 && tsc -p electron -w\" \"wait-on http://localhost:3000 && tsc -p electron && electronmon .\"",
-        "electron:package:mac": "yarn react:build && tsc -p electron && electron-builder -m -c.extraMetadata.main=build/electron/electron.js",
-        "electron:package:win": "yarn react:build && tsc -p electron && electron-builder -w -c.extraMetadata.main=build/electron/electron.js",
-        "electron:package:linux": "yarn react:build && tsc -p electron && electron-builder -l -c.extraMetadata.main=build/electron/electron.js"
+        "electron:build": "tsc -p main-process",
+        "electron:dev": "electron ./build/main-process/main.js",
+        "electron:package:mac": "yarn react:build && tsc -p main-process && electron-builder -m -c.extraMetadata.main=build/main-process/main.js",
+        "electron:package:win": "yarn react:build && tsc -p main-process && electron-builder -w -c.extraMetadata.main=build/main-process/main.js",
+        "electron:package:linux": "yarn react:build && tsc -p main-process && electron-builder -l -c.extraMetadata.main=build/main-process/main.js"
     },
     "eslintConfig": {
         "extends": [
@@ -196,11 +202,11 @@
         },
         "win": {
             "target": "nsis",
-            "icon": "public/logos/rendered/favicon.ico"
+            "icon": "public/logos/rendered/track-bw-square-256x256.ico"
         },
         "linux": {
             "target": "deb",
-            "icon": "public/logos/rendered/track-bw-square.png",
+            "icon": "public/logos/rendered/track-bw-square-512x512.png",
             "category": "Utility"
         }
     }

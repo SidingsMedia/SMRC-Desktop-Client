@@ -1,0 +1,114 @@
+/* SPDX-FileCopyrightText: Copyright (c) 2021 Sidings Media
+
+SPDX-License-Identifier: MIT */
+
+:root {
+    /* Colours */
+    --dark-h: 0;
+    --dark-s: 0%;
+    --dark-l: 7%;
+
+    --text-h: 0;
+    --text-s: 0%;
+    --text-l: 100%;
+
+    --dark: hsla(var(--dark-h), var(--dark-s), var(--dark-l), 100%);
+    --dark-10: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 5%),
+        100%
+    );
+    --dark-20: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 10%),
+        100%
+    );
+    --dark-30: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 15%),
+        100%
+    );
+    --dark-40: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 20%),
+        100%
+    );
+    --dark-50: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 25%),
+        100%
+    );
+    --dark-60: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 30%),
+        100%
+    );
+    --dark-70: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 35%),
+        100%
+    );
+    --dark-80: hsla(
+        var(--dark-h),
+        var(--dark-s),
+        calc(var(--dark-l) + 40%),
+        100%
+    );
+
+    --text: hsla(var(--text-h), var(--text-s), var(--text-l), 100%);
+    --text-10: hsla(
+        var(--text-h),
+        var(--text-s),
+        calc(var(--text-l) - 5%),
+        100%
+    );
+    --text-20: hsla(
+        var(--text-h),
+        var(--text-s),
+        calc(var(--text-l) - 10%),
+        100%
+    );
+    --text-30: hsla(
+        var(--text-h),
+        var(--text-s),
+        calc(var(--text-l) - 15%),
+        100%
+    );
+    --text-40: hsla(
+        var(--text-h),
+        var(--text-s),
+        calc(var(--text-l) - 20%),
+        100%
+    );
+    --text-50: hsla(
+        var(--text-h),
+        var(--text-s),
+        calc(var(--text-l) - 25%),
+        100%
+    );
+    --text-60: hsla(
+        var(--text-h),
+        var(--text-s),
+        calc(var(--text-l) - 30%),
+        100%
+    );
+    --text-70: hsla(
+        var(--text-h),
+        var(--text-s),
+        calc(var(--text-l) - 35%),
+        100%
+    );
+    --text-80: hsla(
+        var(--text-h),
+        var(--text-s),
+        calc(var(--text-l) - 40%),
+        100%
+    );
+}

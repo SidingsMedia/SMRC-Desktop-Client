@@ -1,0 +1,39 @@
+/* SPDX-FileCopyrightText: Copyright (c) 2021 Sidings Media
+
+SPDX-License-Identifier: MIT */
+
+.buttonRight {
+    float: right;
+}
+.buttonLeft {
+    float: left;
+}
+.TitleBarButton {
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    -webkit-app-region: no-drag;
+    line-height: 20px;
+}
+
+/* Platform specific styles */
+/* Windows */
+.win32Icon {
+    width: 50px;
+}
+.win32Icon:hover {
+    background-color: var(--dark-30);
+}
+.win32Icon .ButtonClose:hover {
+    background-color: red;
+}
+/* Linux */
+.linuxIcon {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    font-size: 12.5px;
+}
+.linuxIcon:hover {
+    background-color: var(--dark-30);
+}

@@ -1,0 +1,64 @@
+{
+    "name": "smrc-desktop-client",
+    "version": "0.1.0",
+    "productName": "SMRC Desktop Client",
+    "companyName": "Sidings Media",
+    "bundleID": "com.sidingsmedia.SMRCClient",
+    "author": {
+        "name": "Sidings Media",
+        "email": "contact@sidingsmedia.com",
+        "url": "https://www.sidingsmedia.com"
+    },
+    "description": "Cross platform desktop client for SMRC",
+    "homepage": "./",
+    "main": "./main.js",
+    "maintainers": [
+        "Sidings Media"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/SidingsMedia/SMRC-Desktop-Client.git"
+    },
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.1.0",
+        "@fortawesome/free-regular-svg-icons": "^6.1.0",
+        "@fortawesome/free-solid-svg-icons": "^6.1.0",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    },
+    "devDependencies": {},
+    "browserslist": {
+        "production": [
+            "last 1 electron version"
+        ],
+        "development": [
+            "last 1 electron version"
+        ]
+    },
+    "build": {
+        "appId": "com.sidingsmedia.smrc",
+        "productName": "Sidings Media Railway Controller",
+        "files": [
+            "build/**/*",
+            "node_modules/**/*"
+        ],
+        "directories": {
+            "buildResources": "public"
+        },
+        "mac": {
+            "target": "dmg",
+            "icon": "public/logos/rendered/favicon.icns"
+        },
+        "win": {
+            "target": "nsis",
+            "icon": "public/logos/rendered/track-bw-square-256x256.ico"
+        },
+        "linux": {
+            "target": "deb",
+            "icon": "public/logos/rendered/track-bw-square-512x512.png",
+            "category": "Utility"
+        }
+    }
+}

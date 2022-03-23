@@ -11,7 +11,7 @@ const defaultProps: Electron.BrowserWindowConstructorOptions = {
     height: 600,
     minHeight: 600,
     webPreferences: {
-        preload: path.join(__dirname, "../preload.js"),
+        preload: path.join(__dirname, "preload.js"),
         sandbox: true,
     },
     frame: process.platform === "win32" ? false : true,

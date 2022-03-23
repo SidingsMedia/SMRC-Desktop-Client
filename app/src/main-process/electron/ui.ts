@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Copyright (c) 2021 Sidings Media
 // SPDX-License-Identifier: MIT
 
-import { app, protocol, BrowserWindow } from "electron";
+import { app, BrowserWindow } from "electron";
 import { EventEmitter } from "events";
 import { Window } from "./base/Window";
 import * as path from "path";
@@ -12,10 +12,15 @@ export class UI extends EventEmitter {
     constructor() {
         super();
         this.windows = [];
+    }
 
+    /** Starts the user interface
+     *
+     */
+    start(): void {
         app.whenReady().then(() => {
             this.createWindow("index.html");
-            this.setupLocalFilesNormalizerProxy();
+            // this.setupLocalFilesNormalizerProxy();
 
             app.on("activate", this.activate);
         });
@@ -109,12 +114,12 @@ export class UI extends EventEmitter {
      * Local proxy to adjust paths of files when loaded from
      * production bundle
      */
-    private setupLocalFilesNormalizerProxy(): void {
-        protocol.registerHttpProtocol("file", (request, callback) => {
-            const url = request.url.substr(8);
-            callback({ path: path.normalize(`${__dirname}/${url}`) });
-        });
-    }
+    // private setupLocalFilesNormalizerProxy(): void {
+    //     protocol.registerHttpProtocol("file", (request, callback) => {
+    //         const url = request.url.substr(8);
+    //         callback({ path: path.normalize(`${__dirname}/${url}`) });
+    //     });
+    // }
 }
 
 

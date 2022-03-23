@@ -8,3 +8,4 @@
 import {UI} from './electron/ui'
 
 const GUI = new UI()
+GUI.start();
